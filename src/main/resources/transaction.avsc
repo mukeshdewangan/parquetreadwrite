@@ -9,6 +9,9 @@
     {"name": "currency", "type": "string"},
     {"name": "transaction_type", "type": "string"},
     {"name": "timestamp", "type": "long"},
-    {"name": "description", "type": "string"}
+    {"name": "description", "type": ["null", "string"], "default": null},
+    {"name": "year", "type": "int"},
+    {"name": "month", "type": "int"},
+    {"name": "day", "type": "int"}
   ]
 }

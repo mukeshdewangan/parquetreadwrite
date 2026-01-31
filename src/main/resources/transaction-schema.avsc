@@ -1,0 +1,58 @@
+{
+  "type": "record",
+  "name": "Transaction",
+  "namespace": "com.mukesh.coldstorageexp.parquetreadwrite.model",
+  "fields": [
+    {
+      "name": "transaction_id",
+      "type": "string",
+      "doc": "Unique transaction identifier"
+    },
+    {
+      "name": "account_id",
+      "type": "string",
+      "doc": "Account identifier"
+    },
+    {
+      "name": "amount",
+      "type": "double",
+      "doc": "Transaction amount"
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "doc": "Currency code (e.g., USD, EUR)"
+    },
+    {
+      "name": "transaction_type",
+      "type": "string",
+      "doc": "Type of transaction (e.g., CREDIT, DEBIT)"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Transaction timestamp in milliseconds"
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Optional transaction description"
+    },
+    {
+      "name": "year",
+      "type": "int",
+      "doc": "Year extracted from timestamp"
+    },
+    {
+      "name": "month",
+      "type": "int",
+      "doc": "Month extracted from timestamp"
+    },
+    {
+      "name": "day",
+      "type": "int",
+      "doc": "Day of month extracted from timestamp"
+    }
+  ]
+}
