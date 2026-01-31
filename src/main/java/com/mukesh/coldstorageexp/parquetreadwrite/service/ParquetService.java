@@ -18,7 +18,7 @@ public class ParquetService {
 
     private final TransactionFileWriter fileWriter;
 
-    public ParquetService(TransactionFileWriter fileWriter) {
+    public ParquetService(@org.springframework.beans.factory.annotation.Qualifier("icebergWriter") TransactionFileWriter fileWriter) {
         this.fileWriter = fileWriter;
     }
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
-@Component
+@Component("localWriter")
 @ConditionalOnProperty(name = "parquet.writer", havingValue = "local", matchIfMissing = true)
 public class LocalTransactionFileWriter implements TransactionFileWriter {
 
