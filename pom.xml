@@ -115,6 +115,13 @@
 			<version>42.7.1</version>
 		</dependency>
 
+		<!-- DuckDB JDBC for querying Iceberg tables from S3 -->
+		<dependency>
+			<groupId>org.duckdb</groupId>
+			<artifactId>duckdb_jdbc</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
 		<!-- Spring Boot Actuator for health checks -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
