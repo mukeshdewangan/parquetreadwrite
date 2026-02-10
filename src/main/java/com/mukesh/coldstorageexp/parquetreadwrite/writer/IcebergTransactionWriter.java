@@ -184,8 +184,8 @@ public class IcebergTransactionWriter implements TransactionFileWriter {
                 
                 System.out.println("✓ Successfully wrote " + partitionTransactions.size() + " transactions to S3 in Parquet format");
                 
-                // Register the data file with Iceberg
-                registerDataFileWithIceberg(table, new Path(filePath), partitionTransactions.size());
+                // Register the data file with Iceberg (include partition path for pruning)
+                registerDataFileWithIceberg(table, new Path(filePath), partitionPath, partitionTransactions.size());
                 
             } catch (IOException e) {
                 System.err.println("✗ Failed to write parquet file to S3: " + e.getMessage());
@@ -194,11 +194,13 @@ public class IcebergTransactionWriter implements TransactionFileWriter {
         }
     }
 
-    private void registerDataFileWithIceberg(Table table, Path filePath, long recordCount) {
+    private void registerDataFileWithIceberg(Table table, Path filePath, String partitionPath, long recordCount) {
         try {
             // Create a DataFile to register with Iceberg
+            // partitionPath must be Hive-style, e.g. "account_id=acc_test_001/year=2024/month=01/day=01"
             DataFile dataFile = DataFiles.builder(table.spec())
                 .withPath(filePath.toString())
+                .withPartitionPath(partitionPath)
                 .withFormat(org.apache.iceberg.FileFormat.PARQUET)
                 .withFileSizeInBytes(100000) // Approximate size - will be updated by Iceberg
                 .withRecordCount(recordCount)
