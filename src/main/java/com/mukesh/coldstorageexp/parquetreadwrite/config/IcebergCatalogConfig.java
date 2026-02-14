@@ -21,10 +21,10 @@ public class IcebergCatalogConfig {
     @Value("${iceberg.catalog.name:iceberg}")
     private String catalogName;
 
-    @Value("${iceberg.catalog.db.user:postgres}")
+    @Value("${iceberg.catalog.db.user:root}")
     private String dbUser;
 
-    @Value("${iceberg.catalog.db.password:postgres}")
+    @Value("${iceberg.catalog.db.password:}")
     private String dbPassword;
 
     @Value("${iceberg.s3.region:eu-north-1}")
@@ -61,7 +61,7 @@ public class IcebergCatalogConfig {
         JdbcCatalog catalog = new JdbcCatalog();
         
         Map<String, String> properties = new HashMap<>();
-        // PostgreSQL JDBC connection
+        // CockroachDB JDBC connection (PostgreSQL wire-compatible)
         properties.put("uri", catalogUri);
         properties.put("jdbc.user", dbUser);
         properties.put("jdbc.password", dbPassword);

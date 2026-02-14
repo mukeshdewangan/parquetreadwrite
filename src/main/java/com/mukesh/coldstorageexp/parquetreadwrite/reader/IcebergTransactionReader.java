@@ -151,7 +151,7 @@ public class IcebergTransactionReader {
                         while ((record = reader.read()) != null) {
                             try {
                                 Transaction tx = mapGenericRecordToTransaction(record, expectedAccountId);
-                                if (tx != null) {
+                                if (tx != null) {   
                                     results.add(tx);
                                     recordsRead++;
                                 }
